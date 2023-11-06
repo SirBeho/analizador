@@ -73,19 +73,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "semantic_analyzer.h"
 int yylex(void);
+
 int yyerror(const char *msg) {
     fprintf(stderr, "Error sintáctico: %s\n", msg);
     return 1;
 }
 
-// Declaración de la estructura Token
-typedef struct {
-    char* token_type;
-} Token;
-
 Token* tokens = NULL;
 int num_tokens = 0;
+
 
 void print_tokens() {
     for (int i = 0; i < num_tokens; i++) {
@@ -108,7 +106,7 @@ void remove_last_token() {
 
 
 /* Line 189 of yacc.c  */
-#line 112 "sintactico.tab.c"
+#line 110 "sintactico.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -155,14 +153,14 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 41 "sintactico.y"
+#line 37 "sintactico.y"
 
-    char* str; // Definir una estructura que coincida con la del analizador léxico
+    char* str;
 
 
 
 /* Line 214 of yacc.c  */
-#line 166 "sintactico.tab.c"
+#line 164 "sintactico.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -174,7 +172,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 178 "sintactico.tab.c"
+#line 176 "sintactico.tab.c"
 
 #ifdef short
 # undef short
@@ -467,9 +465,9 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    54,    54,    55,    59,    60,    61,    62,    63,    64,
-      67,    68,    71,    72,    75,    76,    77,    80,    84,    88,
-      89,    90,    93,    94,    95,    98,    99,   100,   101
+       0,    50,    50,    51,    55,    56,    57,    58,    59,    60,
+      63,    64,    67,    68,    71,    72,    73,    76,    80,    84,
+      85,    86,    89,    90,    91,    94,    95,    96,    97
 };
 #endif
 
@@ -1408,119 +1406,119 @@ yyreduce:
         case 10:
 
 /* Line 1455 of yacc.c  */
-#line 67 "sintactico.y"
+#line 63 "sintactico.y"
     { add_token("INTRUCCION"); ;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 68 "sintactico.y"
+#line 64 "sintactico.y"
     { add_token("INTRUCCION"); ;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 71 "sintactico.y"
+#line 67 "sintactico.y"
     { add_token("FUNCION"); ;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 72 "sintactico.y"
+#line 68 "sintactico.y"
     { add_token("FUNCION"); ;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 75 "sintactico.y"
+#line 71 "sintactico.y"
     { add_token("DECLARACION"); ;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 76 "sintactico.y"
+#line 72 "sintactico.y"
     {  add_token("DECLARACION"); ;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 77 "sintactico.y"
+#line 73 "sintactico.y"
     {  add_token("DECLARACION"); ;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 80 "sintactico.y"
+#line 76 "sintactico.y"
     { add_token("ASIGNACION"); ;}
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 84 "sintactico.y"
+#line 80 "sintactico.y"
     { add_token("COMPARACION"); ;}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 88 "sintactico.y"
+#line 84 "sintactico.y"
     {  add_token("SUMA");;}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 89 "sintactico.y"
+#line 85 "sintactico.y"
     {  add_token("RESTA");;}
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 93 "sintactico.y"
+#line 89 "sintactico.y"
     {  add_token("MULTIPLICAION");;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 94 "sintactico.y"
+#line 90 "sintactico.y"
     {  add_token("DIVISION");;}
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 98 "sintactico.y"
+#line 94 "sintactico.y"
     {  add_token("NUMERO");;}
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 99 "sintactico.y"
+#line 95 "sintactico.y"
     {  add_token("IDENTIFICADOR");;}
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 101 "sintactico.y"
+#line 97 "sintactico.y"
     {  add_token("NEGATIVO");;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1524 "sintactico.tab.c"
+#line 1522 "sintactico.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1732,7 +1730,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 104 "sintactico.y"
+#line 100 "sintactico.y"
 
 
 

@@ -59,9 +59,9 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 41 "sintactico.y"
+#line 37 "sintactico.y"
 
-    char* str; // Definir una estructura que coincida con la del analizador léxico
+    char* str;
 
 
 

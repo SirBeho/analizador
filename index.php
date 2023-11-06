@@ -4,7 +4,7 @@ exec("gcc -o analizador_lexico lex.yy.c -lfl");
 
 exec("flex lexico.l");
 exec("bison -d sintactico.y");
-exec("gcc -o analizador lex.yy.c sintactico.tab.c -lfl");
+exec("gcc -o analizador lex.yy.c sintactico.tab.c semantico.c -lfl");
 
 ?>
 

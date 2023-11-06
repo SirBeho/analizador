@@ -1,4 +1,4 @@
-# Readme: Analizadores Léxico y Sintáctico en C y PHP
+# Readme: Analizadores Léxico ,Sintáctico  y Semantico en C y PHP
 
 Este Readme proporciona información detallada sobre dos analizadores, `lexico.l` y `sintactico.y`, escritos en C, así como el código PHP y HTML asociado para crear una interfaz web que utilice estos analizadores.
 

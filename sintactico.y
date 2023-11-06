@@ -2,19 +2,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "semantic_analyzer.h"
 int yylex(void);
+
 int yyerror(const char *msg) {
     fprintf(stderr, "Error sintáctico: %s\n", msg);
     return 1;
 }
 
-// Declaración de la estructura Token
-typedef struct {
-    char* token_type;
-} Token;
-
 Token* tokens = NULL;
 int num_tokens = 0;
+
 
 void print_tokens() {
     for (int i = 0; i < num_tokens; i++) {
@@ -36,18 +34,16 @@ void remove_last_token() {
 }
 %}
 
-
-
 %union {
-    char* str; // Definir una estructura que coincida con la del analizador léxico
+    char* str;
 }
+
 %token <str> TIPO_DE_DATO ASIGNACION COMPARACION FIN
-%token <str>  IDENTIFICADOR NUMERO PALABRA_RESERVADA 
+%token <str> IDENTIFICADOR NUMERO PALABRA_RESERVADA 
 %token SIMBOLO_ASIGNACION OPERADOR SIGNO_NEGATIVO
 %left '+' '-'
 %left '*' '/'
 %right '^'
-
 
 %%
 
