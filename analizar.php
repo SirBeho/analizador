@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["texto"] != '') {
 
   
     $resultado = [
-        "tokens" => $tokens,
+        "tokens" => '[null]',
         "msj" => $analisis
     ]; 
 

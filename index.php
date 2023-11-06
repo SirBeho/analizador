@@ -130,8 +130,7 @@ exec("gcc -o analizador lex.yy.c sintactico.tab.c semantico.c -lfl");
         });
 
         function actualizarResultado(texto) {
-            // Realizar una solicitud AJAX al servidor PHP para enviar la cadena de texto
-            // y recibir los resultados del análisis léxico.
+         
             fetch('analizar.php', {
                     method: 'POST',
                     body: new URLSearchParams({
@@ -146,6 +145,7 @@ exec("gcc -o analizador lex.yy.c sintactico.tab.c semantico.c -lfl");
 
                     resultados = JSON.parse(resultados);
                     resultadoDiv.innerHTML = "Analisis Lexico";
+                    console.log(resultados)
                     msj.innerHTML = "Analisis Sintactico";
                     if (lexCheckbox.checked) {
                         resultadoDiv.innerHTML = 'Valor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token <br>';

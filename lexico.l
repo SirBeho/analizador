@@ -65,24 +65,22 @@ void print_tokens();
 int yyparse(void);
 
 int main() {
-    // Leer tokens de tu analizador léxico (modifica esta parte según tu implementación)
-    // Asume que has llenado el arreglo "tokens" correctamente.
+ 
     yyparse();
 
-    // Realizar el análisis semántico
+   
     semantic_analysis();
 
-    // Imprimir los tokens (para fines de depuración)
-    for (int i = 0; i < num_tokens; i++) {
-        printf("Token Type: %s, Value: %s\n", tokens[i].token_type, tokens[i].value);
-    }
+    print_tokens()
 
-    // Liberar memoria (asegúrate de liberar adecuadamente la memoria asignada a los tokens y valores)
+   
     for (int i = 0; i < num_tokens; i++) {
         free(tokens[i].token_type);
         free(tokens[i].value);
     }
     free(tokens);
+
+    
 
     return 0;
 }
