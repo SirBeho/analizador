@@ -1,25 +1,26 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["texto"] != '') {
 
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["texto"] != '') {  
+ //if (true) {  
+
+   $texto = $_POST["texto"];
    
-    $texto = $_POST["texto"];
-    $texto = str_replace(array("\r", "\n"), '', $texto);
+   //$texto = str_replace(array("\r", "\n"), '', $texto);
+   //$texto = str_replace('%', '"%"', $texto);
+   //$texto= str_replace('&', '"&"', $texto); 
+   //$texto= str_replace('<', '^<', $texto); 
 
-    $textoAnalizar = escapeshellarg($texto);
-    $tokens = shell_exec('echo ' .$texto . '| analizador_lexico.exe 2>&1');
-    $analisis = shell_exec('echo ' .$texto . '| analizador.exe 2>&1');
+   //$texto = escapeshellarg($texto);
+   //$texto = trim($texto, '"'); // Eliminar las comillas al principio y al final
 
-
+   $analisis = shell_exec('echo  "---'.$texto.'---"  | .\analizador.exe 2>&1');
   
-    $resultado = [
-        "tokens" => '[null]',
-        "msj" => $analisis
-    ]; 
-
-    // Enviar la respuesta en formato JSON
-     header('Content-Type: application/json');
-    echo json_encode($resultado);
+   // Enviar la respuesta en formato JSON
+   header('Content-Type: application/json');
+   echo json_encode($analisis);
 }
 
 
